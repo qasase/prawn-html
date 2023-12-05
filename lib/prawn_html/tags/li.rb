@@ -21,7 +21,7 @@ module PrawnHtml
         case parent.class.to_s
         when 'PrawnHtml::Tags::Ol'
           @counter = (parent.counter += 1)
-          @parent_counters = context.select { |element| element.tag == :li && element != self }.map(&:counter)
+          @parent_counters = context.filter_map { |element| element.counter if element.tag == :li && element != self }
         when 'PrawnHtml::Tags::Ul'
           @symbol = parent.styles[:list_style_type] || '&bullet;'
         end
