@@ -5,6 +5,8 @@ module PrawnHtml
     class Li < Tag
       ELEMENTS = [:li].freeze
 
+      attr_reader :counter
+
       def block?
         true
       end
